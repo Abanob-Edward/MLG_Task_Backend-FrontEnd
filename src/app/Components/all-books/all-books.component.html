@@ -1,0 +1,53 @@
+<div class="container">
+    <div class="row">
+      <h2>All Books</h2>
+    </div>
+    <div class="row">
+        
+        
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Genre</th>
+            <th>PublishedYear</th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of books">
+            <td>{{ item.id }}</td>
+            <td>{{ item.title }}</td>
+            <td>{{ item.author }}</td>
+            <td>{{ item.genre }}</td>
+            <td>{{ item.publishedYear }}</td>
+            <td>
+                <button class="btn btn-primary" [routerLink]="['/UpdateBook', item.id ]">
+                 Edit
+                </button>
+            </td>
+            <td>
+                <button class="btn btn-danger" (click)="deleteBook(item.id)">
+                    Delete
+                </button>
+            </td>
+            <td>
+                <button class="btn btn-dark" [routerLink]="['/BookDetails', item.id ]">
+                    Details
+                </button>
+            </td>
+           
+          </tr>
+        </tbody>
+      </table>
+      <div class="form-control btn">
+        <button class="btn btn-success" [routerLink]="['/AddBook']">
+            Add New Book
+        </button>
+    </div>
+    </div>
+  </div>
