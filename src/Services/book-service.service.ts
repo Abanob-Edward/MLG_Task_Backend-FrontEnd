@@ -1,10 +1,11 @@
 import { Observable } from 'rxjs';
-import { IBookDto } from '../models/ibook-dto';
+
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { IResultDataList } from '../models/iresult-data-list';
-import { IResultView } from '../models/iresult-view';
-import { IAddOrUpdateBookDto } from '../models/iadd-or-update-book-dto';
+import { IResultDataList } from '../app/models/iresult-data-list';
+import { IAddOrUpdateBookDto } from '../app/models/iadd-or-update-book-dto';
+import { IResultView } from '../app/models/iresult-view';
+
 
 @Injectable({
   providedIn: 'root'
@@ -13,11 +14,11 @@ export class BookService {
 
   private baseUrl = 'https://localhost:44378/api/Book'; 
   constructor(private http: HttpClient) { }
-
+ 
   getAllBooks(items: number=10, pageNumber: number = 1): Observable<IResultDataList> {
     const url = `${this.baseUrl}/GetAllWithPaging?items=${items}&pageNumber=${pageNumber}`;
        return this.http.get<IResultDataList>(url);
-  }
+  } 
   getBookByID(id:number): Observable<IResultView> {
     const url = `${this.baseUrl}/GetBookByID/${id}`;
     return this.http.get<IResultView>(url);

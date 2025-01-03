@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild, viewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { BookService } from '../../Services/book-service.service';
@@ -13,11 +13,13 @@ import { Location } from '@angular/common';
   templateUrl: './update-book.component.html',
   styleUrl: './update-book.component.css'
 })
-export class UpdateBookComponent implements OnInit {
+export class UpdateBookComponent implements OnInit ,AfterViewInit{
+  @ViewChild('testViewCHld') Gender !: ElementRef 
   constructor(private bookService: BookService,
     private location: Location,
     private route: ActivatedRoute,
   ) { }
+ 
   bookId!: number;
   book: IAddOrUpdateBookDto={
     title:'',
@@ -26,11 +28,17 @@ export class UpdateBookComponent implements OnInit {
     publishedYear: 0
    }
    ngOnInit() {
+    //this.route.snapshot.params['id']
     this.route.params.subscribe(params => {
       this.bookId = +params['id'];
-      this.getbook(this.bookId )
+     // this.getbook(this.bookId )
     });
-    
+       
+  }
+  ngAfterViewInit(): void {
+    this.Gender.nativeElement.value ='DKR'
+   console.log( )
+   
   }
 
   getbook(id:number){
@@ -50,7 +58,7 @@ export class UpdateBookComponent implements OnInit {
    await this.bookService.updateBook(this.bookId , this.book).subscribe({
       next: (response) => {
         // Navigate back to the previous page after successfully adding the item
-        // this.location.back();
+         this.location.back();
       },
       error: (error) => {
         // Handle the error appropriately

@@ -3,7 +3,7 @@
         <form class="col-6" (ngSubmit)="updateBook()">
             <div class="form-group ">
               <label for="title">Title:</label>
-              <input type="text" class="form-control"  name="title"  id="title" [(ngModel)]="book.title" required>
+              <input type="text" #gndr class="form-control"  name="title"  id="title" [(ngModel)]="book.title" required>
             </div>
             <div class="form-group">
               <label for="author">Author:</label>
@@ -11,7 +11,7 @@
             </div>
             <div class="form-group">
               <label for="genre">Genre:</label>
-              <input type="text" class="form-control"  name="genre"  id="genre" [(ngModel)]="book.genre">
+              <input type="text" class="form-control"  name="genre"  id="genre" [(ngModel)]="book.genre" >
             </div>
             <div class="form-group">
               <label for="publishedYear">Published Year:</label>
@@ -19,9 +19,12 @@
             </div>
         
             <div style="text-align: center;" class="col-6">
-                <button  type="submit" class="btn btn-primary">Update Book</button>
+                <button  type="submit" class="btn btn-primary" >Update Book</button>
               </div>
-          </form>
+              <input #testViewCHld  type="text" value="abanob"/>
+          </form> 
+
+         
     </div>
 </div>
 

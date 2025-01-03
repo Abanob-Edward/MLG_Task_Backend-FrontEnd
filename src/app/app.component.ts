@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { AllBooksComponent } from "./Components/all-books/all-books.component";
 import { HttpClientModule } from '@angular/common/http';
 import { BookService } from './Services/book-service.service';
+import { NavbarComponent } from './Components/navbar/navbar.component';
+import { MainLayoutComponent } from './Components/main-layout/main-layout.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,HttpClientModule, AllBooksComponent],
+  imports: [RouterOutlet,HttpClientModule,NavbarComponent, MainLayoutComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
   providers:[BookService] 

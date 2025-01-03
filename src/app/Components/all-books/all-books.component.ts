@@ -1,14 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { BookService } from '../../Services/book-service.service';
+
 import { IBookDto } from '../../models/ibook-dto';
 import { IResultDataList } from '../../models/iresult-data-list';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { BookService } from '../../../Services/book-service.service';
 
 @Component({
   selector: 'app-all-books',
   standalone: true,
+  providers:[], 
   imports: [FormsModule,CommonModule ,RouterLink],
   templateUrl: './all-books.component.html',
   styleUrl: './all-books.component.css'
